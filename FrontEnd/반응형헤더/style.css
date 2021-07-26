@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+}
+a {
+  text-decoration: n;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #263343;
+}
