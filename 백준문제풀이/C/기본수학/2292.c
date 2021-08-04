@@ -1,13 +1,24 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(void)
 {
-    int room = 1;
-    int num;
-    scanf("%d", &num);
-    if (num == 1)
+    int n;
+
+    int cnt = 1;
+    int range = 1;
+    int tmp = 1;
+
+    scanf("%d", &n);
+
+    while (range < n)
     {
-        printf("1")
+        tmp = 6 * cnt;
+        range += tmp;
+        cnt++;
     }
-    1씩 뺴면서 6으로 나눠서 몫이 0이 되면 room count를 출력한다.return 0;
+
+    printf("%d", cnt);
+
+    return 0;
 }
