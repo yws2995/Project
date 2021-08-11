@@ -1,85 +1,88 @@
 #include <stdio.h>
-#include <string.h>
 
-#define MAX_SIZE 10000
-#define TRUE 1
-#define FALSE 0
+int stack[100001];
+int cnt = 0;
 
-int stack[MAX_SIZE];
-int idx = -1;
-
-int main(void)
+void push(int n)
 {
-    int n, i;
+    stack[cnt] = n;
+    cnt++;
+}
 
-    scanf("%d", &n);
-    for (i = 0; i < n; i++)
+void pop()
+{
+    if (cnt != 0)
     {
-        char command[6];
-        scanf("%s", command);
-
-        if (strcmp(command, "push") == 0)
-        {
-            int x;
-            scanf("%d\n", &x);
-            push(x);
-        }
-        else if (strcmp(command, "pop") == 0)
-        {
-            printf("%d\n", pop());
-        }
-        else if (strcmp(command, "size"))
-        {
-            printf("%d\n", size());
-        }
-        else if (strcmp(command, "empty"))
-        {
-            printf("%d\n", empty());
-        }
-        else if (strcmp(command, "top") == 0)
-        {
-            printf("%d\n", top());
-        }
+        cnt--;
+        printf("%d\n", stack[cnt]);
+        stack[cnt] = 0;
     }
-    return 0;
-}
-
-int push(int x)
-{
-    stack[idx + 1] = x;
-    idx++;
-}
-
-int pop()
-{
-    if (empty())
-        return -1;
     else
     {
-        idx--;
-        return stack[idx - 1];
+        printf("%d\n", -1);
     }
 }
 
-int size()
+void top()
 {
-    return idx + 1;
-}
-
-int empty()
-{
-    if (idx == -1)
+    if (cnt != 0)
     {
-        return TRUE;
+        printf("%d\n", stack[cnt - 1]);
     }
     else
-        return FALSE;
+    {
+        printf("%d\n", -1);
+    }
 }
 
-int top()
+void empty()
 {
-    if (idx == -1)
-        return -1;
+    if (cnt != 0)
+    {
+        printf("0\n");
+    }
     else
-        return stack[idx];
+    {
+        printf("1\n");
+    }
+}
+
+void size()
+{
+    printf("%d\n", cnt);
+}
+
+int main()
+{
+    int stackSize;
+    char order[10];
+    scanf("%d", &stackSize); // stack 크기 저장.
+    int stack[stackSize];    // 입력한 숫자의 stack배열 생성
+
+    for (int i = 0; i < stackSize; i++)
+    {
+        scanf("%s", &order);
+        if (!strcmp(order, "push"))
+        {
+            int n;
+            scanf("%d", &n);
+            push(n);
+        }
+        else if (!strcmp(order, "top"))
+        {
+            top();
+        }
+        else if (!strcmp(order, "size"))
+        {
+            size();
+        }
+        else if (!strcmp(order, "empty"))
+        {
+            empty();
+        }
+        else
+        {
+            pop();
+        }
+    }
 }
