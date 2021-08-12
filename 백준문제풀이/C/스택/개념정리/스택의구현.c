@@ -24,7 +24,7 @@ char peek()
     return stack[top];
 }
 
-int in_empty()
+int is_empty()
 {
     return top == -1;
 }

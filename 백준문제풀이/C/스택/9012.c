@@ -12,7 +12,8 @@ void paren_checker()
     {
         if (idx == -1 && (!strcmp(ch, ")")))
         {
-            result = "NO";
+            printf("NO\n");
+            break;
         }
         else if (stack[idx] == "(" && (!strcmp(ch, ")")))
         {
