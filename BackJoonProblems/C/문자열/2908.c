@@ -2,18 +2,14 @@
 
 int main(void)
 {
-    char arr1[3];
-    char arr2[3];
-    int i = 0;
+    int num1, num2, n1, n2 = 0;
 
-    scanf("%d %d", arr1, arr2);
-    for (i = 0; i < 3; i++)
-    {
-        arr1[i] = arr1[2 - i];
-        arr2[i] = arr2[2 - i];
-    }
-    if (arr1 > arr2)
-        printf("%s", arr1);
+    scanf("%d %d", &num1, &num2);
+    n1 = (num1 / 100) + (num1 % 10 * 100) + ((num1 / 10) % 10 * 10);
+    n2 = (num2 / 100) + (num2 % 10 * 100) + ((num2 / 10) % 10 * 10);
+    if (n1 > n2)
+        printf("%d", n1);
     else
-        printf("%s", arr2);
+        printf("%d", n2);
+    return 0;
 }
