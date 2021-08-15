@@ -16,7 +16,7 @@ int main(void)
             count++;
         }
     }
-    printf("%d", count);
+    printf("%d", count + 1);
 
     return 0;
 }
