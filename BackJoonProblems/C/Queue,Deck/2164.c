@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#define SIZE 500001
 int check;
 
-typedef struct Queue
+typedef struct
 {
-    int data[1000001];
+    int data[SIZE];
     int front, rear;
 } Queue;
 
@@ -15,45 +15,64 @@ void init(Queue *q)
     q->front = q->rear = 0;
 }
 
-array_init(Queue *q, int k)
+int is_empty(Queue *q)
 {
-    int i;
-    for (i = 0; i < k; i++)
-    {
-        q->data[i] = i + 1;
-    }
-    q->front = 0;
-    q->rear = k - 1;
+    return (q->front == q->rear);
 }
 
-function(Queue *q)
+int is_full(Queue *q)
 {
-
-    if (q->rear = q->front)
-    {
-        return q->data[q->front];
-    }
-    else
-    {
-        q->data[(q->front)] = 0;
-        q->data[q->rear + 1] = q->data[++(q->front)];
-        function(&q);
-    }
+    return ((q->rear + 1) % SIZE == q->front);
+}
+void push(Queue *q, int n)
+{
+    if (is_full(q))
+        return;
+    q->rear = (q->rear + 1) % SIZE;
+    q->data[q->rear] = n;
 }
 
+int pop(Queue *q)
+{
+    if (is_empty(q))
+        return -1;
+    q->front = (q->front + 1) % SIZE;
+    return q->data[q->front];
+}
+
+int peek(Queue *q)
+{
+    return q->data[q->front + 1];
+}
+
+int size(Queue *q)
+{
+    return (q->rear) - (q->front);
+}
 int main(void)
 {
     Queue q;
     init(&q);
 
-    int n;
-    scanf("%d\n", &n);
+    int n, i;
+    int tmp, j;
+    scanf("%d", &n);
 
-    array_init(&q, n);
-    while (check == 1)
+    for (i = 0; i < n; i++)
     {
-        printf("%d\n", function(&q));
-        check = 1;
+        push(&q, i + 1);
     }
+
+    while (!is_empty(&q))
+    {
+
+        tmp = pop(&q);
+        if (is_empty(&q))
+            break;
+        tmp = pop(&q);
+        push(&q, tmp);
+    }
+    printf("%d", tmp);
+
     return 0;
 }
