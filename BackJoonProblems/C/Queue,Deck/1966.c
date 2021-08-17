@@ -11,13 +11,13 @@ typedef struct
 
 void init(Queue *q)
 {
-    q->front = q->rear = 0;
+    q->front = q->rear = -1;
 }
 
-int is_full(Queue *q)
-{
-    return ((q->rear + 1) % SIZE == q->front);
-}
+// int is_full(Queue *q)
+// {
+//     return ((q->rear + 1) % SIZE == q->front);
+// }
 
 int is_empty(Queue *q)
 {
@@ -27,18 +27,16 @@ int is_empty(Queue *q)
 void push(Queue *q, int n)
 {
 
-    if (is_full(q))
-        return;
-    q->rear = (q->rear + 1) % SIZE;
-    q->data[q->rear] = n;
+    // if (is_full(q))
+    //     return;
+    return q->data[++(q->rear)] = n;
 }
 
 int pop(Queue *q)
 {
     if (is_empty(q))
         return -1;
-    q->front = (q->front + 1) % SIZE;
-    return q->data[q->front];
+    return q->data[++(q->front)];
 }
 
 int main(void)
