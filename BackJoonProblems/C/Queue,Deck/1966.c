@@ -58,7 +58,7 @@ int main(void)
         }
         if (n == 1)
         {
-            printf("%d", 1);
+            printf("%d\n", 1);
             check = 1;
         }
 
@@ -71,7 +71,7 @@ int main(void)
             }
         }
         if (check == 0)
-            printf("%d", pop(&q)); // q->front는 idx=3을 가리키고 있다.
+            printf("%d\n", pop(&q)); // q->front는 idx=3을 가리키고 있다.
     }
 
     return 0;

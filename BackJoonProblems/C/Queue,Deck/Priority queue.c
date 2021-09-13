@@ -15,3 +15,12 @@ max_heap_insert(a, key)
         i = parent(i);
     }
 }
+
+heap_extract_max(a){
+    if heap_size[a]<1
+        then error "heap underflow"
+    max <= a[1]
+    a[1] <= heap_size[a] -1 
+    max-heapify(a,1)
+    return max
+}
